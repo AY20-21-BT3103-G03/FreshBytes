@@ -39,11 +39,12 @@ export function addListing(item) {
 
 /**
  * Gets user details via username
- * @param {String} username  CURRENTLY ASSUME THAT THIS IS BEING STORED AFTER LOGIN
+ * @param {String} username
+ * @param {Boolean} isCustomer Is either "customer" or "business"
  * @returns A QueryDocumentSnapshot of user details
  */
-export function getUserDetails(username, userType) {
-  const formatUserType = userType == "customer" ? "customers" : "businesses";
+export function getUserDetails(username, isCustomer) {
+  const formatUserType = isCustomer ? "customers" : "businesses";
 
   return database
     .collection(formatUserType)
@@ -55,39 +56,21 @@ export function getUserDetails(username, userType) {
 }
 
 /**
- * Gets user type
- * @param {String} username
- * @returns Either customer or business
- */
-export function getUserType(username) {
-  return database
-    .collection("users")
-    .doc(username)
-    .get()
-    .then((snapshot) => {
-      const isCustomer = snapshot.data().isCustomer;
-
-      if (isCustomer) {
-        return "customer";
-      } else {
-        return "business";
-      }
-    });
-}
-
-/**
  * Gets orders with listing for the associated user.
- * @param {String} userType
+ * @param {Boolean} isCustomer
  * @param {String} userId
  * @returns A Promise of an array of all order data related to the user ID.
  */
-export function getUserOrdersWithListing(userType, userId) {
-  const formatUserType = userType == "customer" ? "customers" : "businesses";
+export function getUserOrdersWithListing(isCustomer, userId) {
+  // collection name
+  const formatUserType = isCustomer ? "customers" : "businesses";
+  // field name in order collection
+  const orderUserType = isCustomer ? "customer" : "business";
   const docRef = database.collection(formatUserType).doc(userId);
 
   return database
     .collection("orders")
-    .where(userType, "==", docRef)
+    .where(orderUserType, "==", docRef)
     .get()
     .then((snapshot) => {
       return snapshot.docs;

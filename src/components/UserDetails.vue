@@ -4,14 +4,14 @@
     <div v-if="!isEdit">
       <user-details-list
         v-bind:userDetails="userDetails"
-        v-bind:userType="userType"
+        v-bind:isCustomer="isCustomer"
       ></user-details-list>
       <button type="button" v-on:click="toggleForm">Change Details</button>
     </div>
     <div v-if="isEdit">
       <user-details-form
         v-bind:userDetails="userDetails"
-        v-bind:userType="userType"
+        v-bind:isCustomer="isCustomer"
       ></user-details-form>
       <button type="button" v-on:click="toggleForm">Cancel Changes</button>
     </div>
@@ -29,7 +29,7 @@ export default {
   },
   props: {
     userDetails: Object,
-    userType: String,
+    isCustomer: Boolean,
   },
   methods: {
     toggleForm: function () {

@@ -5,7 +5,7 @@
     <div id="content">
       <user-details
         v-bind:userDetails="userDetails"
-        v-bind:userType="userType"
+        v-bind:isCustomer="isCustomer"
         v-if="toShow.details"
       ></user-details>
       <order-details
@@ -22,7 +22,6 @@ import OrderDetails from "../components/OrderDetails.vue";
 import UserDetails from "../components/UserDetails.vue";
 import {
   getUserDetails,
-  getUserType,
   getUserOrdersWithListing,
 } from "../database/queries.js";
 
@@ -30,7 +29,7 @@ export default {
   data() {
     return {
       userDetails: null,
-      userType: "",
+      isCustomer: Boolean,
       allOrders: [],
       toShow: {
         details: true,
@@ -57,18 +56,13 @@ export default {
   },
   created: function () {
     const username = this.$store.getters.getUsername;
-    console.log(username);
-    getUserType(username).then((type) => {
-      console.log(type);
-      this.userType = type;
+    this.isCustomer = this.$store.getters.getUserType;
+    getUserDetails(username, this.isCustomer).then((doc) => {
+      this.userDetails = doc.data();
+      this.userId = doc.id;
 
-      getUserDetails(username, type).then((doc) => {
-        this.userDetails = doc.data();
-        this.userId = doc.id;
-
-        getUserOrdersWithListing(type, doc.id).then((orders) => {
-          this.allOrders = orders;
-        });
+      getUserOrdersWithListing(this.isCustomer, doc.id).then((orders) => {
+        this.allOrders = orders;
       });
     });
   },

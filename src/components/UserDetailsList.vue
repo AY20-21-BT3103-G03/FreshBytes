@@ -3,7 +3,7 @@
     <p>Name: {{ this.userDetails.name }}</p>
     <p>Email: {{ this.userDetails.email }}</p>
     <p>Username: {{ this.userDetails.username }}</p>
-    <div v-if="userType == 'customer'">
+    <div v-if="isCustomer">
       <p>Points: {{ this.userDetails.points }}</p>
       <p>Location: {{ this.userDetails.location }}</p>
     </div>
@@ -18,7 +18,7 @@
 export default {
   props: {
     userDetails: Object,
-    userType: String,
+    isCustomer: Boolean,
   },
 };
 </script>

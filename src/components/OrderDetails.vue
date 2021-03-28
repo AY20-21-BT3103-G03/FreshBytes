@@ -19,13 +19,7 @@ export default {
     allOrders: {},
   },
   methods: {},
-  created: function () {
-    /*
-        getUserOrdersWithListing(this.userType, this.userId).then(allOrders => {
-            this.totalOrders = allOrders;
-        });
-        */
-  },
+  created: function () {},
 };
 </script>
 
