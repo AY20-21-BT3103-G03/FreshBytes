@@ -1,16 +1,10 @@
 <template>
-  <div>
-    <p>Name: {{ this.userDetails.name }}</p>
-    <p>Email: {{ this.userDetails.email }}</p>
-    <p>Username: {{ this.userDetails.username }}</p>
-    <div v-if="isCustomer">
-      <p>Points: {{ this.userDetails.points }}</p>
-      <p>Location: {{ this.userDetails.location }}</p>
-    </div>
-    <div v-else>
-      <p>Address: {{ this.userDetails.address }}</p>
-      <p>Description: {{ this.userDetails.description }}</p>
-    </div>
+  <div id="table">
+    <b-table
+      :data="tableData[0]"
+      :columns="tableData[1]"
+      focusable="true"
+    ></b-table>
   </div>
 </template>
 
@@ -20,11 +14,36 @@ export default {
     userDetails: Object,
     isCustomer: Boolean,
   },
+  computed: {
+    tableData: function () {
+      let userData = [];
+      let columns = [];
+
+      userData.push({ detail: "Name", value: this.userDetails.name });
+      userData.push({ detail: "Email", value: this.userDetails.email });
+      userData.push({ detail: "Username", value: this.userDetails.username });
+
+      if (this.isCustomer) {
+        userData.push({ detail: "Points", value: this.userDetails.points });
+        userData.push({ detail: "Location", value: this.userDetails.location });
+      } else {
+        userData.push({ detail: "Address", value: this.userDetails.address });
+        userData.push({
+          detail: "Description",
+          value: this.userDetails.description,
+        });
+      }
+      columns.push({ field: "detail" });
+      columns.push({ field: "value" });
+
+      return [userData, columns];
+    },
+  },
 };
 </script>
 
 <style scoped>
-p {
+#table {
   font-weight: bold;
   margin-left: 20px;
 }

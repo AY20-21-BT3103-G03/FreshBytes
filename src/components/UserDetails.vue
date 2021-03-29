@@ -6,7 +6,7 @@
         v-bind:userDetails="userDetails"
         v-bind:isCustomer="isCustomer"
       ></user-details-list>
-      <button type="button" v-on:click="toggleForm">Change Details</button>
+      <b-button v-on:click="toggleForm">Update Details</b-button>
     </div>
     <div v-if="isEdit">
       <user-details-form
@@ -14,7 +14,7 @@
         v-bind:isCustomer="isCustomer"
         v-bind:userId="userId"
       ></user-details-form>
-      <button type="button" v-on:click="toggleForm">Cancel Changes</button>
+      <b-button v-on:click="toggleForm">Cancel Changes</b-button>
     </div>
   </div>
 </template>

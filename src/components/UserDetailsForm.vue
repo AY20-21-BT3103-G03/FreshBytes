@@ -40,7 +40,7 @@
         ></b-input>
       </b-field>
     </div>
-    <button v-on:click="changeUserDet">Submit</button>
+    <b-button type="is-success" v-on:click="changeUserDet">Update</b-button>
   </div>
 </template>
 

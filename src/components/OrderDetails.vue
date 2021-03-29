@@ -1,12 +1,35 @@
 <template>
   <div id="orderDets">
     <h1 class="title is-5">Your Past Orders</h1>
-    <ul id="orderList">
-      <li v-for="order in this.allOrders" :key="order.id">
-        Order Number: {{ order.id }} | Item: {{ order.listingID.name }} |
-        Quantity: {{ order.quantity }}
-      </li>
-    </ul>
+    <b-table :data="allOrders" focusable="true">
+      <b-table-column field="id" label="Order ID" v-slot="props">
+        {{ props.row.id }}
+      </b-table-column>
+
+      <b-table-column field="listingID.name" label="Item" v-slot="props">
+        {{ props.row.listingID.name }}
+      </b-table-column>
+
+      <b-table-column
+        field="listingID.price"
+        label="Price per Piece"
+        v-slot="props"
+      >
+        ${{
+          props.row.listingID.price.toLocaleString("en-US", {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2 }),
+        }}
+      </b-table-column>
+
+      <b-table-column field="deliveryMode" label="Delivery Mode" v-slot="props">
+        {{ props.row.deliveryMode }}
+      </b-table-column>
+
+      <b-table-column field="fulfilled" label="Fulfilled" v-slot="props">
+        {{ convertFulfilled(props.row.fulfilled) }}
+      </b-table-column>
+    </b-table>
   </div>
 </template>
 
@@ -18,8 +41,15 @@ export default {
   props: {
     allOrders: {},
   },
-  methods: {},
-  created: function () {},
+  methods: {
+    convertFulfilled: function (isFulfilled) {
+      if (isFulfilled) {
+        return "Yes";
+      } else {
+        return "No";
+      }
+    },
+  },
 };
 </script>
 
