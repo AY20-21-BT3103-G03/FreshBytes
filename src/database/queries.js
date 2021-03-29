@@ -57,6 +57,20 @@ export function getUserDetails(username, isCustomer) {
 }
 
 /**
+ * Gets the Firestore document reference of a user in either
+ * the customer or business collection, depending on the user type
+ * @param {String} userId A string representing the document ID
+ * associated with the user in the customer/business collection
+ * @param {Boolean} isCustomer A boolean representing whether the user
+ * is a customer or a business
+ * @returns A document reference
+ */
+export function getUserDetailsDocRef(userId, isCustomer) {
+  const formatUserType = isCustomer ? "customers" : "businesses";
+  return database.collection(formatUserType).doc(userId);
+}
+
+/**
  * Gets orders with listing for the associated user.
  * @param {Boolean} isCustomer A boolean representing
  * whether the user is a customer or a business
@@ -117,13 +131,25 @@ async function extractListing(order) {
 
 /**
  * Gets document data via a document reference
- * @param {firebase.firestore.DocumentReference} docRef
+ * @param {firebase.firestore.DocumentReference} docRef A Firestore
+ * document reference
  * @returns A Promise resolving into a data object of the document
  */
 function getFromDocRef(docRef) {
   return docRef.get().then((snapshot) => {
     return snapshot.data();
   });
+}
+
+/**
+ * Updates a Firestore document using its document reference
+ * @param {firebase.firestore.DocumentReference} docRef A Firestore
+ * document reference
+ * @param {Object} newData An Object containing updated fields
+ * @returns A Promise that resolves upon update success/failure
+ */
+export function updateFromDocRef(docRef, newData) {
+  return docRef.update(newData);
 }
 
 /**

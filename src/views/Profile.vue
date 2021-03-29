@@ -6,6 +6,7 @@
       <user-details
         v-bind:userDetails="userDetails"
         v-bind:isCustomer="isCustomer"
+        v-bind:userId="userId"
         v-if="toShow.details"
       ></user-details>
       <order-details

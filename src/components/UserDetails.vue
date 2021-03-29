@@ -12,6 +12,7 @@
       <user-details-form
         v-bind:userDetails="userDetails"
         v-bind:isCustomer="isCustomer"
+        v-bind:userId="userId"
       ></user-details-form>
       <button type="button" v-on:click="toggleForm">Cancel Changes</button>
     </div>
@@ -30,6 +31,7 @@ export default {
   props: {
     userDetails: Object,
     isCustomer: Boolean,
+    userId: String,
   },
   methods: {
     toggleForm: function () {

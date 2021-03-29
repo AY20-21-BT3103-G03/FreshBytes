@@ -40,15 +40,17 @@
         ></b-input>
       </b-field>
     </div>
-    <button v-on:click="changeUserDet">Submit Not Done D:</button>
+    <button v-on:click="changeUserDet">Submit</button>
   </div>
 </template>
 
 <script>
+import { getUserDetailsDocRef, updateFromDocRef } from "../database/queries";
 export default {
   props: {
     userDetails: Object,
     isCustomer: Boolean,
+    userId: String,
   },
   methods: {
     changeUserDet: function () {
@@ -69,8 +71,16 @@ export default {
           }
         }
       }
-      //add a setter here
-      console.log(updateData);
+
+      let docRef = getUserDetailsDocRef(this.userId, this.isCustomer);
+      updateFromDocRef(docRef, updateData)
+        .then(() => {
+          console.log("User details successfully updated");
+          this.$router.go();
+        })
+        .catch((error) => {
+          console.error("Error updating user details: ", error);
+        });
       return;
     },
   },
