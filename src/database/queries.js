@@ -39,8 +39,9 @@ export function addListing(item) {
 
 /**
  * Gets user details via username
- * @param {String} username
- * @param {Boolean} isCustomer Is either "customer" or "business"
+ * @param {String} username A string representing the user's username
+ * @param {Boolean} isCustomer A boolean representing whether the user
+ * is a customer or a business
  * @returns A QueryDocumentSnapshot of user details
  */
 export function getUserDetails(username, isCustomer) {
@@ -57,8 +58,10 @@ export function getUserDetails(username, isCustomer) {
 
 /**
  * Gets orders with listing for the associated user.
- * @param {Boolean} isCustomer
- * @param {String} userId
+ * @param {Boolean} isCustomer A boolean representing
+ * whether the user is a customer or a business
+ * @param {String} userId The document id of the associated
+ * user in the customers or businesses collection
  * @returns A Promise of an array of all order data related to the user ID.
  */
 export function getUserOrdersWithListing(isCustomer, userId) {
