@@ -33,6 +33,7 @@ const store = new Vuex.Store({
     logout: function (state) {
       state.isLoggedIn = false;
       state.userData = {};
+      state.cart = [];
     },
     addToCart(state, payload) {
       const record = state.cart.find((product) => product.id == payload.id);
