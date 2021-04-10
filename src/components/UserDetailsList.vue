@@ -1,10 +1,18 @@
 <template>
-  <div id="table">
-    <b-table
-      :data="tableData[0]"
-      :columns="tableData[1]"
-      focusable="true"
-    ></b-table>
+  <div id="table" class="card">
+    <header class="card-header">
+      <p class="card-header-title">Your User Details</p>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <b-table
+          :data="tableData[0]"
+          :columns="tableData[1]"
+          :focusable="true"
+          :show-header="false"
+        ></b-table>
+      </div>
+    </div>
   </div>
 </template>
 

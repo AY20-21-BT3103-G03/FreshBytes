@@ -1,18 +1,34 @@
 <template>
-  <div v-if="userDetails">
-    <h1 class="title is-3">{{ userDetails.name }}'s Profile Page</h1>
-    <side-bar v-on:change-profile="changeDetails"></side-bar>
-    <div id="content">
-      <user-details
-        v-bind:userDetails="userDetails"
-        v-bind:isCustomer="isCustomer"
-        v-bind:userId="userId"
-        v-if="toShow.details"
-      ></user-details>
-      <order-details
-        v-bind:allOrders="allOrders"
-        v-if="toShow.orders"
-      ></order-details>
+  <div>
+    <section class="hero is-small">
+      <div class="hero-body">
+        <img :src="ProfilePic" />
+        <p class="title">
+          {{ userDetails.name }}
+        </p>
+      </div>
+    </section>
+
+    <div id="empty"></div>
+
+    <div class="columns">
+      <div class="column is-2">
+        <side-bar v-on:change-profile="changeDetails"></side-bar>
+      </div>
+      <div class="column">
+        <div id="content">
+          <user-details
+            v-bind:userDetails="userDetails"
+            v-bind:isCustomer="isCustomer"
+            v-bind:userId="userId"
+            v-if="toShow.details"
+          ></user-details>
+          <order-details
+            v-bind:allOrders="allOrders"
+            v-if="toShow.orders"
+          ></order-details>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,11 +41,12 @@ import {
   getUserDetails,
   getUserOrdersWithListing,
 } from "../database/queries.js";
+import ProfilePic from "../assets/img/profile.png";
 
 export default {
   data() {
     return {
-      userDetails: null,
+      userDetails: {},
       isCustomer: Boolean,
       allOrders: [],
       toShow: {
@@ -38,6 +55,7 @@ export default {
         dashboard: false,
       },
       userId: String,
+      ProfilePic: ProfilePic,
     };
   },
   methods: {
@@ -70,9 +88,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #content {
-  margin-left: 200px;
   padding: 1px 16px;
+}
+
+#empty {
+  padding: 10px;
+}
+
+.hero {
+  background-image: linear-gradient(#f5edd9, #f7d785);
 }
 </style>

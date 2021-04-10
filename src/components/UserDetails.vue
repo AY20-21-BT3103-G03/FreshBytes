@@ -1,6 +1,5 @@
 <template>
   <div id="userDet">
-    <h1 class="title is-5">Your User Details</h1>
     <div v-if="!isEdit">
       <user-details-list
         v-bind:userDetails="userDetails"
@@ -31,7 +30,7 @@ export default {
   props: {
     userDetails: Object,
     isCustomer: Boolean,
-    userId: String,
+    userId: {},
   },
   computed: {
     userData: function () {
@@ -52,9 +51,7 @@ export default {
 
 <style scoped>
 #userDet {
-  border: green solid 2px;
   text-align: left;
-  padding: 10px;
 }
 
 button {

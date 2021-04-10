@@ -1,5 +1,5 @@
 <template>
-  <div id="form">
+  <div id="form" class="box">
     <b-field label="Name">
       <b-input :value="userDetails.name" class="data" name="name"></b-input>
     </b-field>
