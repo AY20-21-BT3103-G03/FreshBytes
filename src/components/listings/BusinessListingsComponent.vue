@@ -19,14 +19,20 @@
         Edit Listings
       </b-button>
     </b-tooltip>
-    <b-button
-      type="is-danger"
-      v-if="hasChecked"
-      @click="confirmDelete"
-      class="button"
+    <b-tooltip
+      label="Select the listing's checkbox first"
+      type="is-info is-light"
+      :active="!hasSelected"
     >
-      Delete Selected Listings
-    </b-button>
+      <b-button
+        type="is-danger"
+        :disabled="!hasChecked"
+        @click="confirmDelete"
+        class="button"
+      >
+        Delete Selected Listings
+      </b-button>
+    </b-tooltip>
     <b-modal v-model="editListingActive" scroll="keep">
       <edit-listing-component
         v-bind:originalData="this.selected"
