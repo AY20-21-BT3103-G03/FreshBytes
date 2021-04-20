@@ -39,7 +39,7 @@
         <br /><br />
         <span><i class="fab fa-instagram"></i></span>
         <a href="https://www.instagram.com/freshest.bytes/"
-          ><b>Follow us on Instagram!</b></a
+          ><b><span class="padd">Follow us on Instagram!</span></b></a
         >
       </div>
     </div>
@@ -69,5 +69,9 @@ export default {
 <style scoped>
 .footer {
   margin-top: 100px;
+}
+
+span.padd {
+  padding-left: 10px;
 }
 </style>

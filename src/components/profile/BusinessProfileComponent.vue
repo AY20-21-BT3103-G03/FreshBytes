@@ -34,26 +34,16 @@
               </article>
 
               <article class="tile is-child">
-                <b-navbar shadow="true" class="navbar-item">
-                  <template #start>
-                    <b-navbar-item href="#" @click="toggleEdit = true">
-                      Edit Profile
-                    </b-navbar-item>
-                    <b-navbar-item href="#">
-                      <span @click="toggleLists()"> Your Listings </span>
-                    </b-navbar-item>
-                    <b-navbar-item href="/dashboard"> Dashboard </b-navbar-item>
-                  </template>
-                </b-navbar>
+                <b-button @click="toggleEdit = true">Edit Profile</b-button>
               </article>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section is-small">
+    <section class="section is-medium">
       <div class="columns is-mobile">
-        <div v-if="toggleListing">
+        <div>
           <business-listings-component></business-listings-component>
         </div>
       </div>
@@ -88,11 +78,6 @@ export default {
   },
   computed: {
     ...mapGetters(["getUser"]),
-  },
-  methods: {
-    toggleLists: function () {
-      this.toggleListing = !this.toggleListing;
-    },
   },
 };
 </script>
