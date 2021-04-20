@@ -88,7 +88,9 @@ export default {
         const validPrice = item.price < this.filterPrice;
         const validType =
           this.filterType.length === 0 || this.filterType.includes(item.type);
-        const validName = item.name.includes(this.filterName);
+        const validName = item.name
+          .toLowerCase()
+          .includes(this.filterName.toLowerCase());
         const validCompany =
           this.filterCompany.length === 0 ||
           this.filterCompany.includes(item.business);
