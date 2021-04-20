@@ -40,7 +40,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|positive"
+          rules="required|positive|decimal|max_price"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -55,7 +55,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|positive"
+          rules="required|positive|decimal|max_price"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -70,7 +70,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|positive"
+          rules="required|positive|max_weight:4"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -85,7 +85,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|greater_than_0"
+          rules="required|greater_than_0|max_qty:6"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -115,20 +115,6 @@
             >
             <b-checkbox v-model="dietary" native-value="Halal"
               >Halal</b-checkbox
-            >
-            <p class="has-text-danger">{{ errors[0] }}</p>
-          </div>
-        </validation-provider>
-        <validation-provider rules="required" v-slot="{ errors }">
-          <label style="margin-bottom: 2px" class="label"
-            >Collection Options</label
-          >
-          <div class="block">
-            <b-checkbox v-model="collection" native-value="Delivery"
-              >Delivery</b-checkbox
-            >
-            <b-checkbox v-model="collection" native-value="Self Pickup"
-              >Self Pickup</b-checkbox
             >
             <p class="has-text-danger">{{ errors[0] }}</p>
           </div>

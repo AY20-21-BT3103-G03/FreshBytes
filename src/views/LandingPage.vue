@@ -8,14 +8,14 @@
           height="300px"
           class="img"
         />
+      </section>
+      <section class="section is-small">
         <login-component v-if="loginMode" @signup="toggleLogin" />
         <signup-component v-if="!loginMode" @back="toggleLogin" />
-        <div class="about-intro">Scroll down to learn more about us!</div>
+        <div>Scroll down to learn more about us!</div>
       </section>
-    </div>
-    <section>
       <mission-component></mission-component>
-    </section>
+    </div>
   </div>
 </template>
 

@@ -9,6 +9,7 @@ import CartPage from "@/views/CartPage";
 import DashboardPage from "@/views/DashboardPage";
 import FAQ from "@/views/FAQ";
 import CompleteCheckoutPage from "@/views/CompleteCheckoutPage";
+import PartnerBusiness from "@/views/PartnerBusiness";
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ const routes = [
     path: "/faq",
     name: "faq",
     component: FAQ,
+  },
+  {
+    path: "/partners",
+    name: "partners",
+    component: PartnerBusiness,
   },
   {
     path: "/completeCheckout",

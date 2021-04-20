@@ -45,7 +45,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|positive"
+          rules="required|positive|decimal|max_price"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -62,7 +62,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|positive"
+          rules="required|positive|decimal|max_price"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -79,7 +79,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|positive"
+          rules="required|positive|max_weight:4"
           v-slot="{ errors, valid }"
         >
           <b-field
@@ -96,7 +96,7 @@
           </b-field>
         </validation-provider>
         <validation-provider
-          rules="required|greater_than_0"
+          rules="required|greater_than_0|max_qty:6"
           v-slot="{ errors, valid }"
         >
           <b-field

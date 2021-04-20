@@ -36,6 +36,11 @@
         <b-button type="is-primary" @click="toast" class="button"
           >Subscribe</b-button
         >
+        <br /><br />
+        <span><i class="fab fa-instagram"></i></span>
+        <a href="https://www.instagram.com/freshest.bytes/"
+          ><b>Follow us on Instagram!</b></a
+        >
       </div>
     </div>
   </footer>

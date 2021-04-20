@@ -25,7 +25,6 @@
         <h4 class="title is-4">Other Details:</h4>
         <p>Weight: {{ product.weight }} kg</p>
         <p>Best Before: {{ bestBefore }}</p>
-        <p>Collection Methods: {{ collectionMethods }}</p>
       </div>
       <footer class="modal-card-footer" v-if="isCustomer">
         <b-button class="is-primary" @click="addToCart">Add to Cart</b-button>

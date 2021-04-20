@@ -34,6 +34,16 @@ extend("max", {
   message: "Name cannot exceed 40 characters!",
 });
 
+extend("max_qty", {
+  ...max,
+  message: "Quantity cannot exceed 6 digits!",
+});
+
+extend("max_weight", {
+  ...max,
+  message: "Weight cannot exceed 4 digits!",
+});
+
 extend("password_min", {
   ...min,
   message: "Password must be at least 8 characters!",
@@ -53,4 +63,22 @@ extend("greater_than_0", (value) => {
   }
 
   return "Value must be greater than 0!";
+});
+
+extend("decimal", (value) => {
+  const numStr = value.toString();
+  const numSplit = numStr.split(".");
+  if (numSplit.length > 1 && numSplit[1].length > 2) {
+    return "Price cannot have more than 2 decimal places!";
+  }
+
+  return true;
+});
+
+extend("max_price", (value) => {
+  if (value > 999999) {
+    return "Exceeded maximum price!";
+  }
+
+  return true;
 });

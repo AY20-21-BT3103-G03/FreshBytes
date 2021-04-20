@@ -12,6 +12,10 @@
         <b-icon pack="fas" icon="question" size="is-medium"> </b-icon>
         <span>FAQ</span>
       </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ name: 'partners' }">
+        <b-icon pack="fas" icon="handshake" size="is-medium"> </b-icon>
+        <span>Partner Businesses</span>
+      </b-navbar-item>
     </template>
     <template #end>
       <b-navbar-item tag="router-link" :to="{ name: 'products' }">
