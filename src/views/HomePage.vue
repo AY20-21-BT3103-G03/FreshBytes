@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img src="@/assets/img/FreshBytesLogo.png" width="300px" height="300px" />
-    <h1 class="title is-3">Welcome to Fresh Bytes!</h1>
+    <h1 class="title is-3">Welcome, {{ getUser.name }}!</h1>
 
     <b-carousel class="carousel">
       <b-carousel-item v-for="(slide, i) in slides" :key="i">
@@ -104,6 +104,7 @@
 import slide1 from "@/assets/img/slide1.png";
 import slide2 from "@/assets/img/slide2.png";
 import GoTop from "@inotom/vue-go-top";
+import { mapGetters } from "vuex";
 
 export default {
   data: function () {
@@ -113,6 +114,9 @@ export default {
   },
   components: {
     GoTop,
+  },
+  computed: {
+    ...mapGetters(["getUser"]),
   },
 };
 </script>
