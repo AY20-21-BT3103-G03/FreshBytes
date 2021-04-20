@@ -79,6 +79,9 @@ export default new Vuex.Store({
     removeItemFromCart: (state, item) => {
       state.cart = state.cart.filter((x) => x.id !== item.id);
     },
+    updateUser: (state, userData) => {
+      state.user = userData;
+    },
   },
   actions: {
     bindItems: firestoreAction(({ bindFirestoreRef }) => {
