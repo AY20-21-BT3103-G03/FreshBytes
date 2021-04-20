@@ -4,11 +4,11 @@
     <div class="about-card" data-aos="fade-right">
       <p>
         We connect you to F&B businesses and local supermarket who have fresh
-        but excess meals or products for sale and consumption at discounted
+        but excess or comestically imperfect products or produce for sale at discounted
         rates.
       </p>
       <p>
-        We believe that every meal saved is a step closer towards saving our
+        We believe that every item saved is a step closer towards saving our
         Earth.
       </p>
     </div>
