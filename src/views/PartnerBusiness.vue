@@ -2,7 +2,7 @@
   <div>
     <section>
       <img src="@/assets/img/FreshBytesLogo.png" width="300px" height="300px" />
-      <h1 class="title is-3" align="left">Our Partner Businessses</h1>
+      <h1 class="title is-3" align="left">Our Partner Businesses</h1>
       <h1 class="subtitle is-5" align="left">
         We thank our partner businesses who work hand in hand with us to create
         change and reduce waste in Singapore. Find out more about these

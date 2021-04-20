@@ -51,27 +51,16 @@
                 <p class="title is-4">About {{ getUser.name }}</p>
                 <p>{{ getUser.description }}</p>
                 <br />
-              </article>
-
-              <article class="tile is-child">
-                <b-navbar shadow class="navbar-item">
-                  <template #start>
-                    <b-navbar-item href="#"> Edit Profile </b-navbar-item>
-                    <b-navbar-item href="#">
-                      <span @click="toggleLists()"> Your Listings </span>
-                    </b-navbar-item>
-                    <b-navbar-item href="/dashboard"> Dashboard </b-navbar-item>
-                  </template>
-                </b-navbar>
+                <b-button>Edit Profile</b-button>
               </article>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section is-small">
+    <section class="section is-medium">
       <div class="columns is-mobile">
-        <div v-if="toggleListing">
+        <div>
           <business-listings-component></business-listings-component>
         </div>
       </div>
@@ -100,15 +89,11 @@ export default {
   },
   data() {
     return {
-      toggleListing: false,
       editMode: false,
       imageError: "",
     };
   },
   methods: {
-    toggleLists: function () {
-      this.toggleListing = !this.toggleListing;
-    },
     toggleEditMode: function () {
       this.editMode = true;
       this.imageError = "";

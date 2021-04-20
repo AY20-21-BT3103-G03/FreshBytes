@@ -50,16 +50,23 @@
         />
       </transition-group>
     </div>
+    <go-top
+      fg-color="#808080"
+      bg-color="#ffffff00"
+      box-shadow="0px 0px 0px rgba(0, 0, 0, 0)"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import ProductCardComponent from "@/components/products/ProductCardComponent";
+import GoTop from "@inotom/vue-go-top";
 
 export default {
   components: {
     ProductCardComponent,
+    GoTop,
   },
   data: function () {
     return {
