@@ -140,9 +140,8 @@
 <script>
 import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
 import { mapGetters } from "vuex";
-import { updateUser } from "@/firebase/database";
+import { updateUser } from "@/firebase/auth";
 import { getUsernames } from "@/firebase/auth";
-import { login } from "@/firebase/auth";
 
 export default {
   components: {
@@ -194,12 +193,10 @@ export default {
         delete newUserData.description;
       }
 
-      updateUser(newUserData, this.getUser.id).then(() => {
-        login(this.username, this.password).then((result) => {
-          this.$store.commit("login", result);
-          loadingComponent.close();
-          this.$emit("close");
-        });
+      updateUser(this.getUser.id, newUserData).then((result) => {
+        this.$store.commit("login", result);
+        loadingComponent.close();
+        this.$emit("close");
       });
     },
   },
