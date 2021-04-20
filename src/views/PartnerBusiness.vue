@@ -16,16 +16,23 @@
       </partner-component>
       <div v-for="biz in getBusinessNames" :key="biz.name"></div>
     </section>
+    <go-top
+      fg-color="#808080"
+      bg-color="#ffffff00"
+      box-shadow="0px 0px 0px rgba(0, 0, 0, 0)"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import GoTop from "@inotom/vue-go-top";
 import PartnerComponent from "@/components/partners/PartnerComponent";
 
 export default {
   components: {
     PartnerComponent,
+    GoTop,
   },
   computed: {
     ...mapGetters(["getBusinesses"]),

@@ -2,8 +2,8 @@
   <div class="products">
     <b-loading :is-full-page="true" v-model="isLoading"></b-loading>
     <div v-if="isCustomer">
-      <h1 class="title is-3">Welcome to our awesome Market</h1>
-      <h1 class="subtitle is-5">Below you will find our latest products!</h1>
+      <h1 class="title is-3">Market Place</h1>
+      <h1 class="subtitle is-5">Our latest products, just for you</h1>
     </div>
     <div v-else>
       <h1 class="title is-3">All Products</h1>
