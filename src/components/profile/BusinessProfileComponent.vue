@@ -51,7 +51,7 @@
                 <p class="title is-4">About {{ getUser.name }}</p>
                 <p>{{ getUser.description }}</p>
                 <br />
-                <b-button>Edit Profile</b-button>
+                <b-button @click="toggleEdit = true">Edit Profile</b-button>
               </article>
             </div>
           </div>
@@ -65,6 +65,15 @@
         </div>
       </div>
     </section>
+    <b-modal v-model="toggleEdit" scroll="keep">
+      <edit-user-profile
+        @close="
+          () => {
+            toggleEdit = false;
+          }
+        "
+      />
+    </b-modal>
   </div>
 </template>
 
@@ -75,23 +84,27 @@ import UserIcon from "@/assets/img/usericon.png";
 import FilePond from "@/filepond";
 import { uploadImage } from "@/firebase/storage";
 import { updateUser } from "@/firebase/auth";
+import EditUserProfile from "@/components/profile/EditUserProfile.vue";
 
 export default {
+  data() {
+    return {
+      toggleListing: false,
+      toggleEdit: false,
+      editMode: false,
+      imageError: "",
+    };
+  },
   components: {
     BusinessListingsComponent,
     FilePond,
+    EditUserProfile,
   },
   computed: {
     ...mapGetters(["getUser"]),
     image: function () {
       return this.getUser.image || UserIcon;
     },
-  },
-  data() {
-    return {
-      editMode: false,
-      imageError: "",
-    };
   },
   methods: {
     toggleEditMode: function () {
