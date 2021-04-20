@@ -30,3 +30,18 @@ export const getUsernames = () =>
     .collection("users")
     .get()
     .then((snapshot) => snapshot.docs.map((x) => x.data().username));
+
+export const updateUser = async (userId, data) => {
+  await database.collection("users").doc(userId).update(data);
+
+  return database
+    .collection("users")
+    .doc(userId)
+    .get()
+    .then((doc) => {
+      return {
+        ...doc.data(),
+        id: doc.id,
+      };
+    });
+};

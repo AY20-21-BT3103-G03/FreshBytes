@@ -23,6 +23,7 @@ export default {
       columns: [
         { field: "orderId", label: "Order ID" },
         { field: "productName", label: "Product" },
+        { field: "username", label: "User" },
         { field: "originalPrice", label: "Original Price" },
         { field: "price", label: "Price" },
         { field: "quantity", label: "Quantity" },

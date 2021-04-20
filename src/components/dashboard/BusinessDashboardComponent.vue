@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import MostSoldProductsChart from "./charts/business/MostSoldProductsChart";
 import CustomersTypeChart from "./charts/business/CustomersTypeChart";
 import ProductTypeChart from "./charts/business/ProductTypeChart";
@@ -68,22 +67,8 @@ export default {
     ProductTypeChart,
     OrdersTableComponent,
   },
-  data: function () {
-    return {
-      columns: [
-        { field: "orderId", label: "Order ID" },
-        { field: "productName", label: "Product" },
-        { field: "originalPrice", label: "Original Price" },
-        { field: "price", label: "Price" },
-        { field: "quantity", label: "Quantity" },
-      ],
-    };
-  },
-  computed: {
-    ...mapGetters(["getOrders"]),
-  },
   created: function () {
-    this.$store.dispatch("bindBusiness  Orders");
+    this.$store.dispatch("bindBusinessOrders");
   },
 };
 </script>
