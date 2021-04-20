@@ -36,7 +36,9 @@
               <article class="tile is-child">
                 <b-navbar shadow="true" class="navbar-item">
                   <template #start>
-                    <b-navbar-item href="#"> Edit Profile </b-navbar-item>
+                    <b-navbar-item href="#" @click="toggleEdit = true">
+                      Edit Profile
+                    </b-navbar-item>
                     <b-navbar-item href="#">
                       <span @click="toggleLists()"> Your Listings </span>
                     </b-navbar-item>
@@ -56,21 +58,33 @@
         </div>
       </div>
     </section>
+    <b-modal v-model="toggleEdit" scroll="keep">
+      <edit-user-profile
+        @close="
+          () => {
+            toggleEdit = false;
+          }
+        "
+      />
+    </b-modal>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import BusinessListingsComponent from "@/components/listings/BusinessListingsComponent.vue";
+import EditUserProfile from "@/components/profile/EditUserProfile.vue";
 
 export default {
   data() {
     return {
       toggleListing: false,
+      toggleEdit: false,
     };
   },
   components: {
     BusinessListingsComponent,
+    EditUserProfile,
   },
   computed: {
     ...mapGetters(["getUser"]),

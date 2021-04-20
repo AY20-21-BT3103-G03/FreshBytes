@@ -20,6 +20,15 @@ export const updateItem = (itemData, docID) => {
     });
 };
 
+export const updateUser = (userData, docID) => {
+  return database
+    .collection("users")
+    .doc(docID)
+    .update({
+      ...userData,
+    });
+};
+
 export const deleteItem = (itemId) =>
   database.collection("items").doc(itemId).delete();
 
