@@ -28,16 +28,14 @@ export default {
     PartnerComponent,
   },
   computed: {
-    ...mapGetters(["isCustomer", "getItems", "getCart", "getBusinesses"]),
-    currentFilteredPrice: function () {
-      return "Max Price: $" + this.filterPrice;
-    },
+    ...mapGetters(["getBusinesses"]),
     getBusinessNames: function () {
       return this.getBusinesses.map((b) => {
         return {
           name: b.name,
           username: b.username,
           description: b.description,
+          image: b.image,
         };
       });
     },
