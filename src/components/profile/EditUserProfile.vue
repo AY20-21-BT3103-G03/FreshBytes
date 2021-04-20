@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" v-if="isLoaded">
     <div class="card-content">
       <h1 class="title is-3">Edit Profile</h1>
       <validation-observer ref="observer" v-slot="{ handleSubmit }">
@@ -140,8 +140,7 @@
 <script>
 import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
 import { mapGetters } from "vuex";
-import { updateUser } from "@/firebase/auth";
-import { getUsernames } from "@/firebase/auth";
+import { getUsernames, updateUser } from "@/firebase/auth";
 
 export default {
   components: {
@@ -150,6 +149,7 @@ export default {
   },
   data: function () {
     return {
+      isLoaded: false,
       name: "",
       email: "",
       description: "",
@@ -171,6 +171,7 @@ export default {
     this.confirmPassword = userData.password;
     console.log(userData);
     // Validation for taken usernames
+
     getUsernames().then((usernames) => {
       extend("available_username", (value) => {
         if (!usernames.includes(value) | (value == userData.username)) {
@@ -178,6 +179,8 @@ export default {
         }
         return "Username already taken!";
       });
+
+      this.isLoaded = true;
     });
   },
   methods: {
