@@ -19,7 +19,7 @@
         businesses, corporations, and individuals and create a means of
         re-distribution for products and produce that are close to expiry or
         have been deemed cosmetically unsellable. Ultimately, this would
-        redistribute fresh and inedible products that would have typically
+        redistribute fresh and edible products that would have typically
         thrown away to customers at a discounted price.
       </h1>
     </section>
